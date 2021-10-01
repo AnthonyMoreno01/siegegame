@@ -339,6 +339,7 @@ void game_over(byte gameover) {
   delay(75);
   gameover = 1;
   players[0].score = 0;
+  players[0].round_score =0;
   frames_per_move = START_SPEED;
 }
 
