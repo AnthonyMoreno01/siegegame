@@ -317,7 +317,7 @@ void title_screen(){
   cputsxy(2,19,"Created by Alessandro Abarca");
   cputsxy(7,21,"and Anthony Moreno");
   vrambuf_flush();
-  music_stop();
+  //music_stop();
 }
 
 //displays game over screen by clearing play screen
@@ -408,7 +408,7 @@ void start_game() {
 void main() {
   famitone_init(prime_music);
   nmi_set_callback(famitone_update);
-  music_play(0);
+  //music_play(0);
   // allows user to input movement commands
   joy_install (joy_static_stddrv);
   //clear screen and display title screen
