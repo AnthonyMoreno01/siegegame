@@ -19,11 +19,15 @@ For more information, see "Making Arcade Games in C".
 #define COLS 32
 #define ROWS 27
 
-void __fastcall__famitone_update(void);
 //#link "famitone2.s"
-//#link "prime_music.s"
+void __fastcall__ famitone_update(void);
+//#link "music_aftertherain.s"
+extern char after_the_rain_music_data[];
 
-extern char prime_music[];
+//#link "music_dangerstreets.s"
+extern char danger_streets_music_data[];
+//#link "demosounds.s"
+extern char demo_sounds[];
 
 byte gameover;
 byte frames_per_move;
@@ -406,9 +410,13 @@ void start_game() {
 }
 
 void main() {
-  famitone_init(prime_music);
+famitone_init(danger_streets_music_data);
+  sfx_init(demo_sounds);
+  // set music callback function for NMI
   nmi_set_callback(famitone_update);
-  //music_play(0);
+  // play music
+  
+
   // allows user to input movement commands
   joy_install (joy_static_stddrv);
   //clear screen and display title screen
@@ -417,7 +425,7 @@ void main() {
   
   //calls title screen function
   title_screen();
-  
+  music_play(0);
   //creates loop that only ends if player closes game
   while (1) {
     while(1){
